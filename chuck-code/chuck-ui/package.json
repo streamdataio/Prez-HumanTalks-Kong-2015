@@ -1,0 +1,25 @@
+{
+  "name": "chuck-ui",
+  "version": "1.0.0",
+  "description": "Chuck UI for Kong presentation",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist/",
+    "watch": "riot --type es6 -w app dist",
+    "compile": "riot --type es6 app dist",
+    "serve": "npm run watch & browser-sync start --server --files 'dist/*.js, app/*.html' --startPath app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "riot.js",
+    "kong"
+  ],
+  "author": "ctranxuan (streamdata.io)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "riot": "^2.3.1"
+  },
+  "devDependencies": {
+
+  }
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chuck Quotes</title>
+
+</head>
+  <body>
+    <quote-tag></quote-tag>
+
+    <!-- inlined tag definition -->
+    <script type="riot/tag">
+      <quote-tag>
+        <h3>Get a Chuck Norris quote right now!</h3>
+        <button onclick="{getQuoteOfTheDay}">Get a quote</button>
+        <div>{quote}</div>
+      </quote-tag>
+
+      getQuoteOfTheDay = function(e) {
+        var xmlhttp = new XMLHttpRequest();
+        var self = this;
+
+        xmlhttp.onload = function() {
+          var status = xmlhttp.status;
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log(xmlhttp.responseText);
+            self.quote = JSON.parse(xmlhttp.responseText).quote;
+            self.update();
+
+          } else {
+            console.error("%o %o %o", xmlhttp.status, xmlhttp.response, xmlhttp.responseText);
+            self.quote = xmlhttp.responseText;
+            self.update();
+          }
+        }
+
+       xmlhttp.open("GET", "http://chuckapi.io:8080/api/quote", true);
+      // xmlhttp.open("GET", "http://kong.chuckapi.io:8000/api/quote", true);
+      // xmlhttp.open("GET", "http://kong.chuckapi.io:8000/api/quote?apikey=abcd123", true);
+      xmlhttp.send();
+
+
+    }
+    </script>
+
+    <!-- include riot.js and the compiler -->
+    <script src="./node_modules/riot/riot+compiler.min.js"></script>
+
+    <!-- mount normally -->
+    <script>
+    riot.mount('*')
+    </script>
+  </body>
+</html>
