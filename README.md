@@ -1,5 +1,5 @@
 # Prez-HumanTalks-Kong-2015
-All the resources for demoing Kong
+All the resources for demoing Kong. The slides can be found at [here](http://streamdataio.github.io/Prez-HumanTalks-Kong-2015/#/).
 
 # Pre-requisites
 
